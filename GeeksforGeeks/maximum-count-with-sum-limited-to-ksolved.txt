@@ -1,0 +1,13 @@
+class Solution:
+    def toyCount(self, arr, k):
+        arr.sort()
+        count=0
+        for price in arr:
+            if price<=k:
+                k-=price
+                count+=1
+            else:
+                break
+        return count
+            
+        
