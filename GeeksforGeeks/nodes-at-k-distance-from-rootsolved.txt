@@ -1,0 +1,25 @@
+''' Binary Tree Node Structure
+class Node:
+    def __init__(self, val):
+        self.data = val
+        self.left = None
+        self.right = None
+'''
+
+class Solution:
+    def kdistance(self, root, k):
+        ans = []
+
+        def dfs(node, level):
+            if node is None:
+                return
+
+            if level == k:
+                ans.append(node.data)
+                return
+
+            dfs(node.left, level + 1)
+            dfs(node.right, level + 1)
+
+        dfs(root, 0)
+        return ans
