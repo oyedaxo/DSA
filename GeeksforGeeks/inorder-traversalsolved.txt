@@ -1,0 +1,22 @@
+'''
+class Node:
+    def __init__(self, val):
+        self.data = val
+        self.left = None
+        self.right = None
+'''
+
+class Solution:
+    def inOrder(self, root):
+        ans = []
+
+        def dfs(node):
+            if node is None:
+                return
+
+            dfs(node.left)
+            ans.append(node.data)
+            dfs(node.right)
+
+        dfs(root)
+        return ans
