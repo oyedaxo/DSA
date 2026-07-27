@@ -1,0 +1,29 @@
+'''
+ class Node:
+    def __init__(self, val):
+        self.right = None
+        self.data = val
+        self.left = None
+'''
+class Solution:
+    def kthFromLeaf(self, root, k):
+        ans = set()
+        path = []
+
+        def dfs(node):
+            if node is None:
+                return
+
+            path.append(node)
+
+            if node.left is None and node.right is None:
+                if len(path) > k:
+                    ans.add(path[-k-1])
+
+            dfs(node.left)
+            dfs(node.right)
+
+            path.pop()
+
+        dfs(root)
+        return len(ans)
