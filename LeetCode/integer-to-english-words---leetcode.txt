@@ -1,0 +1,17 @@
+
+                return [LESS_THAN_20[n]]
+            elif n < 100:
+                return [TENS[n // 10]] + helper(n % 10)
+            else:
+                return [LESS_THAN_20[n // 100], "Hundred"] + helper(n % 100)
+                
+        res = []
+        for i in range(len(THOUSANDS)):
+            if num % 1000 != 0:
+                chunk_words = helper(num % 1000)
+                if THOUSANDS[i]:
+                    chunk_words.append(THOUSANDS[i])
+                res = chunk_words + res
+            num //= 1000
+            
+        return " ".join(res)
