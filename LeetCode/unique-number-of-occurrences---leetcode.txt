@@ -1,4 +1,18 @@
 
-class Solution:
-    def arrayStringsAreEqual(self, word1, word2):
-        return "".join(word1) == "".join(word2)
+    def uniqueOccurrences(self, arr):
+        freq = {}
+
+        for num in arr:
+            if num in freq:
+                freq[num] += 1
+            else:
+                freq[num] = 1
+
+        seen = {}
+
+        for count in freq.values():
+            if count in seen:
+                return False
+            seen[count] = True
+
+        return True
