@@ -1,0 +1,10 @@
+
+class Solution(object):
+    def moveZeroes(self, nums):
+        last_non_zero = 0  # Tracks where the next non-zero element should go
+        
+        for current in range(len(nums)):
+            if nums[current] != 0:
+                # Swap elements
+                nums[last_non_zero], nums[current] = nums[current], nums[last_non_zero]
+                last_non_zero += 1
