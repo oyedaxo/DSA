@@ -1,0 +1,17 @@
+
+                    left_results = compute(expr[:i])
+                    right_results = compute(expr[i+1:])
+                    
+                    for l in left_results:
+                        for r in right_results:
+                            if char == '+':
+                                res.append(l + r)
+                            elif char == '-':
+                                res.append(l - r)
+                            elif char == '*':
+                                res.append(l * r)
+                                
+            memo[expr] = res
+            return res
+            
+        return compute(expression)
