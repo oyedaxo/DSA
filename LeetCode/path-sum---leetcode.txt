@@ -1,16 +1,11 @@
 
 class Solution(object):
-    def minDepth(self, root):
+    def hasPathSum(self, root, targetSum):
         if not root:
-            return 0
+            return False
             
         if not root.left and not root.right:
-            return 1
+            return root.val == targetSum
             
-        if not root.left:
-            return 1 + self.minDepth(root.right)
-            
-        if not root.right:
-            return 1 + self.minDepth(root.left)
-            
-        return 1 + min(self.minDepth(root.left), self.minDepth(root.right))
+        return self.hasPathSum(root.left, targetSum - root.val) or self.hasPathSum(root.right, targetSum - root.
+        val)
